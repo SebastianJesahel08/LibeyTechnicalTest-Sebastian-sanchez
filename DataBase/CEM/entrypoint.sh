@@ -1,1 +1,9 @@
-/var/opt/sqlserver/SqlCmdStartup.sh & /opt/mssql/bin/sqlservr
+set -e
+
+/opt/mssql/bin/sqlservr &
+
+sleep 20
+
+/var/opt/sqlserver/SqlCmdStartup.sh
+
+wait
