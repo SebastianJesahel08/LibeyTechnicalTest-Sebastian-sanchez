@@ -12,6 +12,7 @@ const routes: Routes = [
 	{
 		path: "user",
 		children: [
+			{ path: "", redirectTo: "card", pathMatch: "full" },
 			{ path: "card", component: UsercardsComponent },
 			{ path: "maintenance", component: UsermaintenanceComponent },
 		],
