@@ -1,6 +1,7 @@
 ﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure;
+
 namespace LibeyTechnicalTestAPI.Middleware
 {
     public static class DIExtensions
@@ -9,6 +10,8 @@ namespace LibeyTechnicalTestAPI.Middleware
         {
             services.AddTransient<ILibeyUserAggregate, LibeyUserAggregate>();
             services.AddTransient<ILibeyUserRepository, LibeyUserRepository>();
+            services.AddTransient<IDocumentTypeRepository, DocumentTypeRepository>();
+
             return services;
         }
     }
