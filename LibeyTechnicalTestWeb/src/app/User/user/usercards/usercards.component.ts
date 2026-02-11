@@ -12,13 +12,16 @@ export class UsercardsComponent implements OnInit {
   loading = false;
   users: any[] = [];
 
-  constructor(private libeyUserService: LibeyUserService, private router: Router) {}
+  constructor(
+    private libeyUserService: LibeyUserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.load();
+    this.loadUsers();
   }
 
-  load(): void {
+  loadUsers(): void {
     this.loading = true;
     this.libeyUserService.List(this.search).subscribe({
       next: (res) => {
@@ -32,20 +35,30 @@ export class UsercardsComponent implements OnInit {
     });
   }
 
+  onSearch(): void {
+    this.loadUsers();
+  }
+
+  onDelete(documentNumber: string): void {
+    if (!confirm("¿Eliminar usuario?")) return;
+
+    this.libeyUserService.Delete(documentNumber).subscribe({
+      next: () => {
+        this.loadUsers();
+      },
+      error: () => {
+        alert("No se pudo eliminar");
+      },
+    });
+  }
+
   goNew(): void {
     this.router.navigate(["/user/maintenance"]);
   }
 
   goEdit(documentNumber: string): void {
-    this.router.navigate(["/user/maintenance"], { queryParams: { documentNumber } });
-  }
-
-  remove(documentNumber: string): void {
-    if (!confirm("Delete this user?")) return;
-
-    this.libeyUserService.Delete(documentNumber).subscribe({
-      next: () => this.load(),
-      error: () => alert("Error deleting user"),
+    this.router.navigate(["/user/maintenance"], {
+      queryParams: { documentNumber },
     });
   }
 }

@@ -7,7 +7,7 @@
 
     <div style="display:flex; gap:10px; margin-bottom: 15px;">
       <input class="form-control" [(ngModel)]="search" placeholder="Buscar por documento, nombre o email" />
-      <button class="btn btn-success" (click)="load()">Buscar</button>
+      <button class="btn btn-success" (click)="onSearch()">Buscar</button>
     </div>
 
     <div *ngIf="loading">Cargando...</div>
@@ -33,7 +33,7 @@
             <td>{{u.active}}</td>
             <td>
               <button class="btn btn-sm btn-warning me-2" (click)="goEdit(u.documentNumber)">Editar</button>
-              <button class="btn btn-sm btn-danger" (click)="remove(u.documentNumber)">Eliminar</button>
+              <button class="btn btn-danger" (click)="onDelete(u.documentNumber)">Eliminar</button>
             </td>
           </tr>
 
