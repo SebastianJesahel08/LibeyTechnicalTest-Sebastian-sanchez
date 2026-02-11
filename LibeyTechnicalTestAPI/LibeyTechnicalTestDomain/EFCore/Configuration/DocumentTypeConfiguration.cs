@@ -9,10 +9,10 @@ namespace LibeyTechnicalTestDomain.EFCore.Configuration
         public void Configure(EntityTypeBuilder<DocumentType> builder)
         {
             builder.ToTable("DocumentType");
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.DocumentTypeId);
 
-            builder.Property(x => x.Id).HasColumnName("Id");
-            builder.Property(x => x.Name).HasColumnName("Name").HasMaxLength(200);
+            builder.Property(x => x.DocumentTypeId).HasColumnName("DocumentTypeId");
+            builder.Property(x => x.DocumentTypeDescription).HasColumnName("DocumentTypeDescription");
         }
     }
 }

@@ -17,9 +17,7 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
 
         public IEnumerable<DocumentType> GetAll()
         {
-            return _context.DocumentTypes
-                .OrderBy(x => x.Name)
-                .ToList();
+            return _context.DocumentTypes.ToList();
         }
     }
 }
